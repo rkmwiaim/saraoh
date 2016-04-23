@@ -1,0 +1,22 @@
+INSERT INTO customer (name, phone_number, visit_count, membership, etc) VALUES ('유경민','010-0000-0000',0,0, "");
+INSERT INTO customer (name, phone_number, visit_count, membership, etc) VALUES ('송은애','010-0000-0001',0,0, "");
+INSERT INTO customer (name, phone_number, visit_count, membership, etc) VALUES ('강신화','010-0000-0002',0,0, "");
+INSERT INTO customer (name, phone_number, visit_count, membership, etc) VALUES ('유경민','010-0000-0003',0,0, "");
+INSERT INTO customer (name, phone_number, visit_count, membership, etc) VALUES ('유경민','010-0000-0004',0,0, "뉴");
+INSERT INTO customer (name, phone_number, visit_count, membership, etc) VALUES ('유경민','010-0000-0005',0,0, "뉴유경민");
+
+INSERT INTO design1 (name) VALUES ('컷');
+INSERT INTO design1 (name) VALUES ('펌');
+INSERT INTO design1 (name) VALUES ('열펌');
+INSERT INTO design1 (name) VALUES ('염색');
+INSERT INTO design1 (name) VALUES ('드라이');
+INSERT INTO design1 (name) VALUES ('기타');
+
+INSERT INTO design2 (name, design1_id, price) VALUES ("컷",1,30000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("일반펌",2,80000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("메니큐어",4,10000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("리체스",4,50000);
+
+INSERT INTO work (customer_id, date, design2_id, price, memo) VALUES (1, '2016-01-04 17:09:53', 1, 30000, '뿌리만 반헤드');
+INSERT INTO work (customer_id, date, design2_id, price, memo) VALUES (2, '2016-01-04 10:00:04', 1, 30000, '뿌리만 반헤드');
+INSERT INTO work (customer_id, date, design2_id, price, memo) VALUES (2, '2016-02-07 17:09:53', 4, 50000, '없음');

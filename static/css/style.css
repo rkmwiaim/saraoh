@@ -1,0 +1,21 @@
+#sidebar-list li{
+    border-top-style: dashed;
+}
+.blue-gradient {
+  background: linear-gradient( to bottom, #0099FF, #0033CC );
+}
+#menubar a{
+  color:white;
+}
+
+#work-sidebar-title{
+  color:white;
+}
+
+.horizontal-seperator {
+  border-bottom: 1px solid #333;
+}
+
+#customer-search-bar {
+  background-color: #B5DAEC;
+}

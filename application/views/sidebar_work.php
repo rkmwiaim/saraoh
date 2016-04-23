@@ -1,7 +1,6 @@
 <div class="col-md-1">
-  <img src="/static/img/logo.jpg" alt="이미지를 찾을 수 없습니다." class="img-circle img-responsive">
-  <button type="button" class="btn btn-block btn-lg btn-primary">영업</button>
+  <button type="button" class="btn btn-block btn-lg blue-gradient" id="work-sidebar-title">영업</button>
   <ul class="list-group" id="sidebar-list">
-    <li class="list-group-item">시술</li>
+    <li class="list-group-item">시술입력</li>
   </ul>
 </div>

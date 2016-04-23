@@ -10,19 +10,14 @@ class Register extends CI_Controller {
 
   public function work() {
 		$this->load->view('header');
+		$this->load->view('menu_bar');
 		$this->load->view('sidebar_work');
-		$this->load->model('customer_model');
-		$customers = $this->customer_model->gets();
-		$this->load->view('main', array('customers' => $customers));
+		$this->load->view('work');
 		$this->load->view('footer');
 	}
 
   public function customer() {
-    $this->load->view('sidebar');
-		$this->load->model('customer_model');
-		$customers = $this->customer_model->gets();
-		$this->load->view('main', array('customers' => $customers));
-		$this->load->view('footer');
+
   }
 }
 ?>

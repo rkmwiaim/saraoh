@@ -8,13 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	 <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-	 <style>
-				#sidebar-list li{
-				    border-top-style: dashed;
-				}
-   </style>
-
+   <link href="/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  

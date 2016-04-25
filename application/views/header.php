@@ -8,6 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	 <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	 <link rel="stylesheet" href="/static/lib/bootstrap-select/bootstrap-select.min.css">
    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="row">

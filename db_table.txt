@@ -1,16 +1,6 @@
 create database saraoh;
 use saraoh;
 
-create table customer (
-id int PRIMARY KEY AUTO_INCREMENT,
-name char(20) NOT NULL,
-phone_number char(13) NOT NULL,
-visit_count int,
-membership int,
-etc  text
-)
-DEFAULT CHARSET=utf8;
-
 create table design1 (
 id int PRIMARY KEY AUTO_INCREMENT,
 name char(20) UNIQUE NOT NULL
@@ -26,14 +16,29 @@ FOREIGN KEY(design1_id) REFERENCES design1(id) ON DELETE CASCADE
 )
 DEFAULT CHARSET=utf8;
 
+create table customer (
+id int PRIMARY KEY AUTO_INCREMENT,
+name char(20) NOT NULL,
+phone_number char(13) NOT NULL,
+membership int,
+last_design2 int ,
+first_visit_date date,
+last_visit_date date,
+memo  text,
+FOREIGN KEY(last_design2) REFERENCES design2(id) ON DELETE CASCADE
+)
+DEFAULT CHARSET=utf8;
+
 create table work (
 id int PRIMARY KEY AUTO_INCREMENT,
 customer_id int NOT NULL,
 date datetime NOT NULL,
+design1_id int NOT NULL,
 design2_id int NOT NULL,
 price int NOT NULL,
 memo varchar(200),
 FOREIGN KEY(customer_id) REFERENCES customer(id) ON DELETE CASCADE,
+FOREIGN KEY(design1_id) REFERENCES design1(id) ON DELETE CASCADE,
 FOREIGN KEY(design2_id) REFERENCES design2(id) ON DELETE CASCADE,
 INDEX(customer_id)
 )

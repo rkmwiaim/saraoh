@@ -12,4 +12,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="row">
+
+<?php
+	if($this->session->flashdata('message')){
+?>
+<script>
+	alert('<?=$this->session->flashdata('message')?>');
+</script>
+<?php
+	}
+?>
+
+<div class="col-md-10">

@@ -1,7 +1,52 @@
+/*register-customer*/
+#register-customer-search-bar {
+  background-color: #BEE3EC;
+  vertical-align:middle;
+}
+
+#register-customer-search-bar .form-group{
+  padding-top: 3px;
+}
+
+#register-customer-search-bar .radio{
+  margin-right:20px;
+}
+
+#register-customer-search-result-table thead td{
+  background-color: #BEE3EC !important;
+  color: #105075;
+  border-width:3px !important;
+  white-space:nowrap;
+  vertical-align: middle;
+}
+
+#register-customer-search-result-table td{
+  text-align: center;
+}
+
 .customer-select-radio {
   margin-right: 10px;
 }
 
+.customer-register-table-head {
+  background-color: #BEE3EC;
+  vertical-align: middle !important;
+  white-space:nowrap;
+  text-align:center;
+}
+
+#customer-search-result th, #selected-customer-table th{
+  background-color: #BEE3EC;
+  vertical-align: middle !important;
+  white-space:nowrap;
+  text-align:center;
+  font-weight: normal;
+}
+
+
+
+
+/* */
 #sidebar-list li{
     border-top-style: dashed;
 }

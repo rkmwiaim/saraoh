@@ -24,7 +24,6 @@ class Register extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('form_validation');
 
-		var_dump($this->input->post());
 		if($this->input->server('REQUEST_METHOD') === "POST") {
 			$class = $this->input->post('class');
 			if($class === "register") {

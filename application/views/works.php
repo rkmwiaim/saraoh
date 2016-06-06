@@ -13,31 +13,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
   <div class="col-md-10">
-    <div class="row">
-      <span class="glyphicon glyphicon-play-circle work-item-icon" aria-hidden="true"></span>
-      고객종합정보
-      <table class="table table-bordered">
-        <tr>
-          <th>성명</th>
-          <th>전화번호</th>
-          <th>총영업금액</th>
-          <th>방문주기</th>
-        </tr>
-        <tr>
-          <td><?=$customer['name']?></td>
-          <td><?=$customer['phone_number']?></td>
-          <td>총영업금액</td>
-          <td>방문주기</td>
-        </tr>
-      </table>
-    </div>
-    <?php $this->load->view('worktable', array('works'=>$works, "design1s_array"=>$design1s_array, "design2s_array"=>$design2s_array)) ?>
+		<div class="container-fluid">
+	    <div class="row" style="margin-top:20px;margin-bottom:20px">
+	      <span class="glyphicon glyphicon-play-circle work-item-icon" aria-hidden="true"></span>
+	      고객종합정보
+	      <table class="table table-bordered">
+	        <tr>
+	          <th>성명</th>
+	          <th>전화번호</th>
+	          <th>총영업금액</th>
+	          <th>방문주기</th>
+	        </tr>
+	        <tr>
+	          <td><?=$customer['name']?></td>
+	          <td><?=$customer['phone_number']?></td>
+	          <td>총영업금액</td>
+	          <td>방문주기</td>
+	        </tr>
+	      </table>
+	    </div>
+    	<?php $this->load->view('worktable', array('works'=>$works, "design1s_array"=>$design1s_array, "design2s_array"=>$design2s_array, "staffs_array"=>$staffs_array)) ?>
+		</div>
   </div>
    <script src="/static/lib/jquery.min.js"></script>
    <script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
    <script src="/static/lib/bootstrap-select/bootstrap-select.min.js"></script>
    <script src="/static/js/pagination.js"></script>
    <script>
+   $(document).ready(function(){
+     $('#work-table-body').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:15});
+   });
+   var backToWork = function() {
+     var parent_window = window.opener;
+     if (parent_window && !parent_window.closed) {
+       parent_window.location.href="/"
+       window.close();
+     }
+   }
    </script>
 </body>
 </html>

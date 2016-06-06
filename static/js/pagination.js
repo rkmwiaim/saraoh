@@ -1,7 +1,7 @@
 $.fn.pageMe = function(opts){
     var $this = this,
         defaults = {
-            perPage: 7,
+            perPage: 5,
             showPrevNext: false,
             hidePageNumbers: false
         },
@@ -99,9 +99,3 @@ $.fn.pageMe = function(opts){
 
     }
 };
-
-$(document).ready(function(){
-
-  $('#work-table-body').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:4});
-
-});

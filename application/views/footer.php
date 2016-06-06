@@ -5,6 +5,15 @@
      <script src="/static/lib/bootstrap-select/bootstrap-select.min.js"></script>
      <script src="/static/js/pagination.js"></script>
      <script>
+     var checkMembership = function(selected) {
+       var value = $(selected).val();
+       if(value == 1) {
+          $(selected).val(0);
+       } else {
+         $(selected).val(1);
+       }
+     }
+
      //customer functions
        var registerCustomer = function() {
          document.forms["register-customer-form"].action = "/index.php/work";
@@ -58,6 +67,24 @@
           document.getElementById('design2-class-input').value = "update-design2";
           document.getElementById('design2-id-input').value = design2_id;
           document.forms["register-design2-form"].submit();
+        }
+
+        //staff functions
+        var selectStaff = function(staff_id) {
+          document.getElementById('staff-id-input').value = staff_id;
+          document.forms["staff-form"].submit();
+        }
+
+        var modifyStaff = function(staff_id) {
+          document.getElementById('register-staff-id-input').value = staff_id;
+          document.getElementById('staff-type-input').value = "modify";
+          document.forms["register-staff-form"].submit();
+        }
+
+        var deleteStaff = function(staff_id) {
+          document.getElementById('register-staff-id-input').value = staff_id;
+          document.getElementById('staff-type-input').value = "delete";
+          document.forms["register-staff-form"].submit();
         }
      </script>
    </body>

@@ -43,7 +43,22 @@
   font-weight: normal;
 }
 
+/*register-staff*/
+#staff-table {
+  width: 700px;
+}
 
+#register-staff-table {
+  width: 700px;
+}
+
+#staff-table th, #register-staff-table th{
+  background-color: #BEE3EC !important;
+  color: #105075;
+  border-width:3px !important;
+  white-space:nowrap;
+  vertical-align: middle;
+}
 
 
 /* */
@@ -117,7 +132,7 @@
   color:#3499CC;
 }
 
-#work-register-table-head th, #work-register-table-head, #last-works-table th{
+#work-register-table th, #work-register-table-head, #last-works-table th, #work-register-table2 th{
   text-align:center;
   background-color: #E0EAF6;
   vertical-align:middle;

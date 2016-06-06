@@ -24,7 +24,6 @@
             <td>최초방문일</td>
             <td>최종방문일</td>
             <td>메모</td>
-            <td></td>
           </tr>
         </thead>
         <tbody>
@@ -53,7 +52,6 @@
                   <td>'.$value->first_visit_date.'</td>
                   <td>'.$value->last_visit_date.'</td>
                   <td>'.$value->memo.'</td>
-                  <td></td>
                   '.form_hidden($customerData).'
                   <input type="hidden" name="class" value="select" id="customer-select-input">
                 </tr>
@@ -74,9 +72,12 @@
     $name = ($class == "register" || $class == "delete") ? "" : set_value("name");
     $phone_number = ($class == "register" || $class == "delete") ? "" : set_value("phone_number");
     $first_visit_date = ($class == "register" || $class == "" || $class == "delete") ? date("Y-m-d") : set_value("first_visit_date");
-
+    $memo = ($class == "delete" || $class == "register") ? "" : $this->input->post("memo");
+    $membership = ($class == "delete" || $class == "register" || $this->input->post('membership') == "") ? 0 : $this->input->post('membership');
+    $checked = ($membership == 1) ? "checked" : "";
     $post_work_function = "modifyCustomer('work')";
     $post_register_function = "modifyCustomer('register')";
+    var_dump($this->input->post());
 
     echo '<div class="row"><span class="glyphicon glyphicon-play-circle work-item-icon" aria-hidden="true"></span>고객';
     echo $modifyOrRegister;
@@ -88,17 +89,21 @@
             <th>성명</th>
             <td><input type="text" class="form-control" name="name" value="'.$name.'"></td>
             <th>전화번호</th>
-            <td style="width:130px;color:grey;text-align:center"><input type="text" class="form-control" name="phone_number" value="'.$phone_number.'">(예:0102221111)</td>
+            <td style="width:150px;color:grey;text-align:center"><input type="text" class="form-control" name="phone_number" value="'.$phone_number.'">(예:0102221111)</td>
             <th>최초방문일</th>
             <td style="width:160px;color:grey;text-align:center"><input type="text" class="form-control" name="first_visit_date" value="'.$first_visit_date.'"> (예:YYYY-MM-DD)</td>
             <th>담당자</th>
-            <td><input type="text" class="form-control" name="staff"></td>
+            <td><select class="form-control" name="staff_id">';
+            foreach($staffs as $staff) {
+              echo '<option value="'.$staff->id.'">'.$staff->name.'</option>';
+            }
+            echo '</select></td>
             <th>회원권</th>
-            <td><div class="checkbox"><label><input type="checkbox" name="membership"></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" name="membership" '.$checked.' value='.$membership.' onclick="checkMembership(this)"></label></div></td>
           </tr>
           <tr>
             <th>참고사항</th>
-            <td colspan="9"><input type="text" class="form-control"></td>
+            <td colspan="9"><input type="text" class="form-control" name="memo" value='.$memo.'></td>
           </tr>
         </table>
         <div class="text-center">';

@@ -36,10 +36,11 @@ class Register extends CI_Controller {
 					$customer = $this->input->post();
 					$postclass = $customer["postclass"];
 					$_POST['class'] = $postclass;
-
+					if(!isset($customer['membership'])) {
+						$customer['membership'] = 0;
+					}
 					unset($customer["class"]);
 					unset($customer["postclass"]);
-					unset($customer["staff"]);
 					$id = $this->customer_model->put($customer);
 
 					if($postclass == "work") {
@@ -69,11 +70,13 @@ class Register extends CI_Controller {
 				$id = $customer["id"];
 				$postclass = $customer["postclass"];
 				$_POST['class'] = $postclass;
+				if(!isset($customer['membership'])) {
+					$customer['membership'] = 0;
+				}
 
 				unset($customer["id"]);
 				unset($customer["class"]);
 				unset($customer["postclass"]);
-				unset($customer["staff"]);
 
 				$this->load->model('customer_model');
 				$this->customer_model->update($id, $customer);
@@ -87,12 +90,26 @@ class Register extends CI_Controller {
 			} else if($class == "delete") {
 				$this->load->model('customer_model');
 				$this->customer_model->remove($this->input->post('id'));
+				$this->session->unset_userdata('customer');
+			} else if($class == "select") {
+				$customer = $this->input->post();
+				$postclass = $customer["postclass"];
+				unset($customer["class"]);
+				unset($customer["postclass"]);
+				unset($customer["staff"]);
 
+				if($postclass != 'work') {
+					$this->load->helper('url');
+					$this->session->set_userdata('customer',$customer);
+					redirect("/work");
+				}
 			}
 		}
 
 		$this->_head();
-		$option = array('header' => 'register-');
+		$this->load->model('staff_model');
+		$staffs = $this->staff_model->gets();
+		$option = array('header' => 'register-', "staffs"=>$staffs);
 		if(isset($customers)) {
 			$option['customers'] = $customers;
 		}
@@ -155,11 +172,14 @@ class Register extends CI_Controller {
 					unset($option["class"]);
 					unset($option['design1-id']);
 					$this->design1_model->put($option);
+					header("Refresh:0");
 				}
 			} else if ($class === "delete-design1"){
 				$this->design1_model->remove($this->input->post('design1-id'));
+				header("Refresh:0");
 			} else if($class === "update-design1") {
 				$this->design1_model->update($this->input->post('design1-id'), array("name" => $this->input->post('name')));
+				header("Refresh:0");
 			}	else if($class == "select-design1"){
 				$class2 = $this->input->post("design2-class");
 				$this->form_validation->set_rules('design2-name', '이름', 'required');
@@ -195,8 +215,54 @@ class Register extends CI_Controller {
 
 	public function staff()
 	{
+		$this->load->library('form_validation');
+		$this->load->model('staff_model');
+
+		if($this->input->server('REQUEST_METHOD') === "POST") {
+			$type = $this->input->post('type');
+
+			if($type == "insert") {
+				$this->form_validation->set_rules('name', '이름', 'required');
+				$this->form_validation->set_rules('phone_number', '전화번호', 'required');
+
+				if ($this->form_validation->run() == FALSE) {
+					$this->session->set_flashdata('message', '조건이 정확하지 않습니다.');
+				} else {
+					$cur = $this->input->post();
+					unset($cur["type"]);
+					$this->staff_model->put($cur);
+
+				}
+			} else if ($type == "select") {
+				$staff = $this->input->post();
+				$staff_id = $staff["id"];
+				$staffs = $this->staff_model->gets();
+				foreach($staffs as $cur) {
+					if($cur->id == $staff_id) {
+						$staff = $cur;
+					}
+				}
+			} else if ($type == "modify") {
+				$cur = $this->input->post();
+				$staff_id = $cur["id"];
+				unset($cur["type"]);
+				unset($cur["id"]);
+				$this->staff_model->update($staff_id, $cur);
+			} else if ($type == "delete") {
+				$cur = $this->input->post();
+				$staff_id = $cur["id"];
+				$this->staff_model->remove($staff_id);
+			}
+		}
+
 		$this->_head();
-		$this->load->view('register_staff');
+		$staffs = $this->staff_model->gets();
+		$staff_vars = array("staffs"=>$staffs);
+		if(isset($staff)) {
+			$staff_vars["staff"] = $staff;
+		}
+
+		$this->load->view('register_staff', $staff_vars);
 		$this->_footer();
 	}
 

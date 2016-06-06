@@ -1,7 +1,10 @@
-INSERT INTO customer (name, phone_number) VALUES ('유경민','010-0000-0000');
-INSERT INTO customer (name, phone_number) VALUES ('송은애','010-0000-0001');
-INSERT INTO customer (name, phone_number) VALUES ('강신화','010-0000-0002');
-INSERT INTO customer (name, phone_number, memo) VALUES ('유경민','010-0000-0003', "분당");
+INSERT INTO staff (name, phone_number) VALUES ('사라오','010-0000-0000');
+INSERT INTO staff (name, phone_number) VALUES ('영휘','010-0000-0000');
+
+INSERT INTO customer (name, phone_number, staff_id) VALUES ('유경민','010-0000-0000', 1);
+INSERT INTO customer (name, phone_number, staff_id) VALUES ('송은애','010-0000-0001', 1);
+INSERT INTO customer (name, phone_number, staff_id) VALUES ('강신화','010-0000-0002', 1);
+INSERT INTO customer (name, phone_number, staff_id, memo) VALUES ('유경민','010-0000-0003', 1, "분당");
 
 INSERT INTO design1 (name) VALUES ('컷');
 INSERT INTO design1 (name) VALUES ('펌');
@@ -15,6 +18,13 @@ INSERT INTO design2 (name, design1_id, price) VALUES ("일반펌",2,80000);
 INSERT INTO design2 (name, design1_id, price) VALUES ("메니큐어",4,10000);
 INSERT INTO design2 (name, design1_id, price) VALUES ("리체스",4,50000);
 
-INSERT INTO work (customer_id, date, design1_id, design2_id, price, memo) VALUES (1, '2016-01-04 17:09:53', 1, 1, 30000, '뿌리만 반헤드');
-INSERT INTO work (customer_id, date, design1_id, design2_id, price, memo) VALUES (2, '2016-01-04 10:00:04', 1, 1, 30000, '뿌리만 반헤드');
-INSERT INTO work (customer_id, date, design1_id, design2_id, price, memo) VALUES (2, '2016-02-07 17:09:53', 4, 4, 50000, '없음');
+INSERT INTO workbundle (id) VALUES (null);
+INSERT INTO workbundle (id) VALUES (null);
+INSERT INTO workbundle (id) VALUES (null);
+
+INSERT INTO work (customer_id, date, bundle_id, staff_id, design1_id, design2_id, price, memo) VALUES (1, '2016-01-04 17:09:53', 1, 1, 1, 1, 30000, '뿌리만 반헤드');
+INSERT INTO work (customer_id, date, bundle_id, staff_id, design1_id, design2_id, price, memo) VALUES (2, '2016-01-04 10:00:04', 2, 1, 1, 1, 30000, '뿌리만 반헤드');
+INSERT INTO work (customer_id, date, bundle_id, staff_id, design1_id, design2_id, price, memo) VALUES (2, '2016-02-07 17:09:53', 2, 2, 4, 4, 50000, '없음');
+INSERT INTO work (customer_id, date, bundle_id, staff_id, design1_id, design2_id, price, memo) VALUES (2, '2016-01-04 10:00:04', 3, 1, 1, 1, 30000, '뿌리만 반헤드');
+INSERT INTO work (customer_id, date, bundle_id, staff_id, design1_id, design2_id, price, memo) VALUES (2, '2016-02-07 17:09:53', 3, 2, 4, 4, 50000, '없음');
+INSERT INTO work (customer_id, date, bundle_id, staff_id, design1_id, design2_id, price, memo) VALUES (2, '2016-02-07 17:09:53', 3, 2, 4, 4, 50000, '뿌리만 반헤드뿌리만 반헤드뿌리만 반헤드뿌리만 반헤드');

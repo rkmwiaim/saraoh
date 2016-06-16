@@ -10,6 +10,27 @@
      <script src="/static/lib/bootstrap-select/bootstrap-select.min.js"></script>
      <script src="/static/js/pagination.js"></script>
      <script>
+     var phoneFormatter = function(rawString) {
+       var number = rawString.replace(/[^\d]/g, '');
+       if (number.length == 7) {
+         number = number.replace(/(\d{3})(\d{4})/, "$1-$2");
+       } else if (number.length == 10) {
+         number = number.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+       } else if (number.length == 11) {
+         number = number.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+       }
+       return number;
+     }
+
+     var formatPhone = function() {
+       var phoneNumbers = document.getElementsByClassName("phone_number");
+       for(var i = 0; i < phoneNumbers.length; i++) {
+         var original = phoneNumbers[i].innerText;
+         phoneNumbers[i].innerText = phoneFormatter(original);
+       }
+     }
+     formatPhone();
+
      var deleteCustomer = function() {
        if(confirm("정말 삭제하시겠습니까?")) {
          document.getElementById('register-class-input').value="delete";
@@ -124,6 +145,8 @@
       if(isset($reload)) {
         $this->session->set_flashdata('message', NULL);
         echo 'window.opener.location.reload();';
+        echo 'window.opener.window.opener.location.reload();';
+
       }
       if(isset($close)) {
         echo 'window.close()';

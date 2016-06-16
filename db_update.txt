@@ -1,0 +1,3 @@
+update customer set last_visit_date=(select max(date) from work where work.customer_id=customer.id);
+update customer set first_visit_date=(select min(date) from work where work.customer_id=customer.id);
+update customer set last_design2=(select design2_id from work where date=(select min(date) from work where work.customer_id=customer.id) limit 1);

@@ -18,7 +18,7 @@
             <td class="customer-info-table-head">성명</td>
             <td><?= $customer["name"];?></td>
             <td class="customer-info-table-head">전화번호</td>
-            <td><?= $customer["phone_number"];?></td>
+            <td class="phone_number"><?= $customer["phone_number"];?></td>
             <?php
               if(!is_null($customer) && array_key_exists("membership", $customer) && $customer["membership"] == 1) {
                 echo '<td class="customer-info-table-head emphasis-cell">회원권</td>';

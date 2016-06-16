@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
 <?php
 	if($this->session->flashdata('message')){
 ?>

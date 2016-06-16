@@ -9,7 +9,7 @@ DEFAULT CHARSET=utf8;
 
 create table design2 (
 id int PRIMARY KEY AUTO_INCREMENT,
-name char(20) UNIQUE NOT NULL,
+name char(20) NOT NULL,
 design1_id int NOT NULL,
 price int NOT NULL,
 FOREIGN KEY(design1_id) REFERENCES design1(id) ON DELETE CASCADE
@@ -25,14 +25,15 @@ DEFAULT CHARSET=utf8;
 
 create table customer (
 id int PRIMARY KEY AUTO_INCREMENT,
-name char(20) NOT NULL,
-phone_number char(13) NOT NULL,
+name char(50) NOT NULL,
+phone_number char(13),
 membership int,
 staff_id int,
 last_design2 int ,
-first_visit_date date,
-last_visit_date date,
+first_visit_date datetime,
+last_visit_date datetime,
 memo  text,
+temp_id int,
 FOREIGN KEY(last_design2) REFERENCES design2(id) ON DELETE CASCADE,
 FOREIGN KEY(staff_id) REFERENCES staff(id) ON DELETE CASCADE
 )

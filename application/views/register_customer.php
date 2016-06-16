@@ -30,32 +30,38 @@
         ';
         if(isset($customers)) {
           if(count($customers) > 0) {
-            foreach($customers as $key => $value) {
-              $customerData = array(
-                "id" => $value->id,
-                "name" => $value->name,
-                "phone_number" => $value->phone_number,
-                "membership" => $value->membership,
-                "last_design2" => $value->last_design2,
-                "first_visit_date" => $value->first_visit_date,
-                "last_visit_date" => $value->last_visit_date,
-                "memo" => $value->memo,
-              );
-              echo '
-              <form action="/index.php/register/customer" method="post" name="modify-customer-form'.$value->id.'">
-                <tr onclick="selectCustomer('.$value->id.')">
-                  <td>'.$value->name.'</td>
-                  <td></td>
-                  <td>'.$value->phone_number.'</td>
-                  <td>'.$value->membership.'</td>
-                  <td>'.$value->last_design2.'</td>
-                  <td>'.$value->first_visit_date.'</td>
-                  <td>'.$value->last_visit_date.'</td>
-                  <td>'.$value->memo.'</td>
-                  '.form_hidden($customerData).'
-                  <input type="hidden" name="class" value="select" id="customer-select-input">
-                </tr>
-                </form>';
+            if(count($customers) <100) {
+              foreach($customers as $key => $value) {
+                $customerData = array(
+                  "id" => $value->id,
+                  "name" => $value->name,
+                  "staff_id" => $value->staff_id,
+                  "phone_number" => $value->phone_number,
+                  "membership" => $value->membership,
+                  "last_design2" => $value->last_design2,
+                  "first_visit_date" => $value->first_visit_date,
+                  "last_visit_date" => $value->last_visit_date,
+                  "memo" => $value->memo,
+                );
+                $staff_name = isset($value->staff_id) ? $staffs_array[$value->staff_id]["name"] : "";
+                echo '
+                <form action="/index.php/register/customer" method="post" name="modify-customer-form'.$value->id.'">
+                  <tr onclick="selectCustomer('.$value->id.')">
+                    <td>'.$value->name.'</td>
+                    <td>'.$staff_name.'</td>
+                    <td class="phone_number">'.$value->phone_number.'</td>
+                    <td>'.$value->membership.'</td>
+                    <td>'.$value->last_design2.'</td>
+                    <td>'.$value->first_visit_date.'</td>
+                    <td>'.$value->last_visit_date.'</td>
+                    <td>'.$value->memo.'</td>
+                    '.form_hidden($customerData).'
+                    <input type="hidden" name="class" value="select" id="customer-select-input">
+                  </tr>
+                  </form>';
+              }
+            } else {
+              echo '<tr><td colspan="9">검색된 고객이 100명 이상입니다. 검색어를 바꿔보세요.</td></tr>';
             }
           } else {
             echo '<tr><td colspan="9">검색된 고객이 없습니다.</td></tr>';
@@ -77,8 +83,6 @@
     $checked = ($membership == 1) ? "checked" : "";
     $post_work_function = "modifyCustomer('work')";
     $post_register_function = "modifyCustomer('register')";
-    var_dump($this->input->post());
-
     echo '<div class="row"><span class="glyphicon glyphicon-play-circle work-item-icon" aria-hidden="true"></span>고객';
     echo $modifyOrRegister;
     echo '</div>
@@ -94,8 +98,12 @@
             <td style="width:160px;color:grey;text-align:center"><input type="text" class="form-control" name="first_visit_date" value="'.$first_visit_date.'"> (예:YYYY-MM-DD)</td>
             <th>담당자</th>
             <td><select class="form-control" name="staff_id">';
-            foreach($staffs as $staff) {
-              echo '<option value="'.$staff->id.'">'.$staff->name.'</option>';
+            foreach($staffs_array as $key => $staff) {
+              if(isset($customer) && $customer["staff_id"] == $staff["id"]) {
+                echo '<option value="'.$staff["id"].'" selected>'.$staff['name'].'</option>';
+              } else {
+                echo '<option value="'.$staff["id"].'" >'.$staff['name'].'</option>';
+              }
             }
             echo '</select></td>
             <th>회원권</th>
@@ -103,7 +111,7 @@
           </tr>
           <tr>
             <th>참고사항</th>
-            <td colspan="9"><input type="text" class="form-control" name="memo" value='.$memo.'></td>
+            <td colspan="9"><input type="text" class="form-control" name="memo" value='.'"'.$memo.'"'.'></td>
           </tr>
         </table>
         <div class="text-center">';

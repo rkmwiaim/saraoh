@@ -177,7 +177,6 @@ class Work extends MY_Controller {
 		}
 
 		$this->load->helper(array('form', 'url'));
-
 		$this->load->view('header');
 		if(isset($post['type']) && $post['type'] == 'select') {
 			$work_param['customer'] = $customer;

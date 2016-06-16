@@ -1,22 +1,70 @@
-INSERT INTO staff (name, phone_number) VALUES ('사라오','010-0000-0000');
-INSERT INTO staff (name, phone_number) VALUES ('영휘','010-0000-0000');
-
-INSERT INTO customer (name, phone_number, staff_id) VALUES ('유경민','010-0000-0000', 1);
-INSERT INTO customer (name, phone_number, staff_id) VALUES ('송은애','010-0000-0001', 1);
-INSERT INTO customer (name, phone_number, staff_id) VALUES ('강신화','010-0000-0002', 1);
-INSERT INTO customer (name, phone_number, staff_id, memo) VALUES ('유경민','010-0000-0003', 1, "분당");
+INSERT INTO staff (name, phone_number) VALUES ('사라오','01075830080');
+INSERT INTO staff (name, phone_number) VALUES ('영휘','01067530913');
+INSERT INTO staff (name, phone_number) VALUES ('광철','01047231123');
+INSERT INTO staff (name, phone_number) VALUES ('홍수연','01090857729');
+INSERT INTO staff (name, phone_number) VALUES ('변수연','01040901571');
+INSERT INTO staff (name, phone_number) VALUES ('임선미','01094743250');
+INSERT INTO staff (name, phone_number) VALUES ('조희운','');
 
 INSERT INTO design1 (name) VALUES ('컷');
 INSERT INTO design1 (name) VALUES ('펌');
 INSERT INTO design1 (name) VALUES ('열펌');
 INSERT INTO design1 (name) VALUES ('염색');
+INSERT INTO design1 (name) VALUES ('크리닉');
 INSERT INTO design1 (name) VALUES ('드라이');
 INSERT INTO design1 (name) VALUES ('기타');
 
-INSERT INTO design2 (name, design1_id, price) VALUES ("컷",1,30000);
-INSERT INTO design2 (name, design1_id, price) VALUES ("일반펌",2,80000);
-INSERT INTO design2 (name, design1_id, price) VALUES ("메니큐어",4,10000);
-INSERT INTO design2 (name, design1_id, price) VALUES ("리체스",4,50000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("컷",1,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("앞머리",1,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자이너컷",1,15000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("학생컷",1,10000);
+
+INSERT INTO design2 (name, design1_id, price) VALUES ("일반펌",2,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("젤리펌",2,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자이너펌",2,50000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자이너젤리펌",2,70000);
+
+INSERT INTO design2 (name, design1_id, price) VALUES ("셋팅",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디지털",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("직펌",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("뿌리매직",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("볼륨매직",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("매직세팅",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("매직디지털",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("시세이도매직",3,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자이너직펌",3,80000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자이너유화",3,100000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자이너볼륨",3,120000);
+
+INSERT INTO design2 (name, design1_id, price) VALUES ("뿌리(로레알)",4,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자인칼라",4,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("메니큐어",4,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("헤나",4,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("하일라이트",4,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("보테닉(뿌리)",4,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("리체스",4,0);
+INSERT INTO design2 (name, design1_id, price) VALUES ("모닝염색",4,35000);
+
+INSERT INTO design2 (name, design1_id, price) VALUES ("무코타",5,80000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("로레알",5,50000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("두피클리닉",5,50000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("디자이너클리닉",5,50000);
+
+INSERT INTO design2 (name, design1_id, price) VALUES ("드라이",6,20000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("매직드라이",6,25000);
+
+INSERT INTO design2 (name, design1_id, price) VALUES ("샴푸",7,10000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("엠플",7,30000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("업스타일",7,50000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("메이크업",7,50000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("셀프미이네",7,10000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("셀프미이네2",7,15000);
+INSERT INTO design2 (name, design1_id, price) VALUES ("팩",7,0);
+
+INSERT INTO customer (name, phone_number, staff_id) VALUES ('유경민','010-0000-0000', 1);
+INSERT INTO customer (name, phone_number, staff_id) VALUES ('송은애','010-0000-0001', 1);
+INSERT INTO customer (name, phone_number, staff_id) VALUES ('강신화','010-0000-0002', 1);
+INSERT INTO customer (name, phone_number, staff_id, memo) VALUES ('유경민','010-0000-0003', 1, "분당");
 
 INSERT INTO workbundle (id) VALUES (null);
 INSERT INTO workbundle (id) VALUES (null);

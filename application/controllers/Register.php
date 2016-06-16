@@ -109,7 +109,14 @@ class Register extends CI_Controller {
 		$this->_head();
 		$this->load->model('staff_model');
 		$staffs = $this->staff_model->gets();
-		$option = array('header' => 'register-', "staffs"=>$staffs);
+		$staffs_array = array();
+		foreach($staffs as $key => $staff) {
+			$staffs_array[$staff->id] = get_object_vars($staff);
+		}
+		$option = array('header' => 'register-', "staffs_array"=>$staffs_array);
+		if(isset($customer)) {
+			$option['customer'] = $customer;
+		}
 		if(isset($customers)) {
 			$option['customers'] = $customers;
 		}

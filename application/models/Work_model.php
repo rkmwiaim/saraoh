@@ -13,14 +13,19 @@ class Work_model extends CI_Model {
     }
 
     function get($customer_id) {
-      $this->db->where("customer_id",$customer_id);
+      $this->db->where("customer_id", $customer_id);
       $this->db->order_by('id', 'DESC');
       $result=$this->db->get('work')->result();
-        return $result;
+      return $result;
     }
 
     function put($option) {
       $this->db->insert('work', $option);
+      $this->load->model('customer_model');
+			$this->customer_model->update($option['customer_id'],array("last_visit_date"=>$option['date']));
+      $customer = $this->session->userdata('customer');
+      $customer['last_visit_date'] = $option['date'];
+      $this->session->set_userdata('customer',$customer);
     }
 
     function get_by_bundle($bundle_id) {

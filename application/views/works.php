@@ -50,6 +50,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        window.close();
      }
    }
+	 var selectWork = function(bundle_id) {
+			var inputElem = document.getElementById("bundle-id-input");
+			inputElem.value = bundle_id;
+			var bundleForm = document.modify_work_form;
+		 window.open('','bundleView','width=1400,height=500,menu=0,status=0');
+
+		 bundleForm.target="bundleView";
+		 bundleForm.bundle_id = bundle_id;
+		 bundleForm.submit();
+	 }
    </script>
 </body>
 </html>

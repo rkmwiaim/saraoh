@@ -49,7 +49,7 @@
                 echo '<td><input type="radio"></td>';
               }
               echo "<td>".$cur->name."</td>";
-              echo "<td>".$cur->phone_number."</td>";
+              echo "<td class='phone_number'>".$cur->phone_number."</td>";
               echo "</tr>";
             }
           }

@@ -14,6 +14,27 @@
        }
      }
 
+     var phoneFormatter = function(rawString) {
+       var number = rawString.replace(/[^\d]/g, '');
+       if (number.length == 7) {
+         number = number.replace(/(\d{3})(\d{4})/, "$1-$2");
+       } else if (number.length == 10) {
+         number = number.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+       } else if (number.length == 11) {
+         number = number.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+       }
+       return number;
+     }
+
+     var formatPhone = function() {
+       var phoneNumbers = document.getElementsByClassName("phone_number");
+       for(var i = 0; i < phoneNumbers.length; i++) {
+         var original = phoneNumbers[i].innerText;
+         phoneNumbers[i].innerText = phoneFormatter(original);
+       }
+     }
+     formatPhone();
+
      //customer functions
        var registerCustomer = function() {
          document.forms["register-customer-form"].action = "/index.php/work";

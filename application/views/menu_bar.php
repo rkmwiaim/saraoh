@@ -7,12 +7,12 @@
           <form class="navbar-form navbar-left" role="search" action="/index.php/register/customer" method="post">
               <img src="/static/img/search.jpg" alt="이미지를 찾을 수 없습니다." class="img-circle" style="height:20px">
               <strong style="margin-right:4px">빠른검색</strong>
-              <select class="form-control" name="customer-search-select">
+              <select class="form-control name-select" name="customer-search-select">
                 <option value="phone_number">전화번호</option>
                 <option value="name">성명</option>
                 <option value="memo">참고</option>
               </select>
-              <input type="text" class="form-control" name="customer-search-query">
+              <input type="text" class="form-control" name="customer-search-query" onkeydown="searchOn(event)">
               <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-triangle-right bar-button-triangle" aria-hidden="true"></span>검색</button>
               <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-right bar-button-triangle" aria-hidden="true"></span>손님</button>
               <?php

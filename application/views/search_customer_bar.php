@@ -2,7 +2,7 @@
   <div class="form-group">
   <div class="radio customer-select-radio">
     <label>
-      <input type="radio" name="customer-search-select" id="search-select-home" value="phone_number" checked>
+      <input type="radio" name="customer-search-select" id="search-select-phone" value="phone_number" checked>
       전화번호
     </label>
   </div>
@@ -23,7 +23,7 @@
       echo form_hidden("from","work");
     }
    ?>
-  <input type="text" name="customer-search-query" class="form-control" style="margin-left:10px; margin-right:20px;">
+  <input type="text" name="customer-search-query" class="form-control" style="margin-left:10px; margin-right:20px;" onkeydown="searchOnInPage(event)">
   <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-triangle-right button-triangle" aria-hidden="true"></span>검색</button>
   <button type="button" class="btn btn-default" onclick="window.location.href='/index.php/register/customer';"><span class="glyphicon glyphicon-triangle-right button-triangle" aria-hidden="true"></span>신규고객</button>
   <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-triangle-right button-triangle" aria-hidden="true"></span>손님</button>

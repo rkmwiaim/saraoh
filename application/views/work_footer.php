@@ -99,6 +99,36 @@
        $('#work-table-body').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:5});
      });
 
+     var searchOn = function(event) {
+       if(event.target.value === "") {
+         var code = event.keyCode;
+         if ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)) {
+           $(".name-select", event.target.parentNode).val("phone_number");
+         } else {
+           $(".name-select", event.target.parentNode).val("name");
+         }
+       }
+     }
+
+     var searchOnInPage = function(event) {
+       if(event.target.value === "") {
+         var phone_radio = document.getElementById("search-select-phone");
+         var name_radio = document.getElementById("search-select-name");
+         var etc_radio = document.getElementById("search-select-etc");
+         var code = event.keyCode;
+         if ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)) {
+           phone_radio.checked = true;
+           name_radio.checked = false;
+           etc_radio.checked = false;
+         } else {
+           phone_radio.checked = false;
+           name_radio.checked = true;
+           etc_radio.checked = false;
+         }
+         console.log(code);
+     }
+   }
+
      var selectWork = function(bundle_id) {
         var inputElem = document.getElementById("bundle-id-input");
         inputElem.value = bundle_id;

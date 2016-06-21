@@ -5,7 +5,15 @@ class Register extends CI_Controller {
 
 	public function index()
 	{
+        $this->load->library('session');
+        $login = $this->session->userdata('login');
 
+        if(isset($login) && $login == "success") {
+
+        } else {
+            $this->load->helper('url');
+            redirect(base_url()."index.php/login");
+        }
 	}
 
 	function _getCustomers() {
@@ -113,7 +121,14 @@ class Register extends CI_Controller {
 		foreach($staffs as $key => $staff) {
 			$staffs_array[$staff->id] = get_object_vars($staff);
 		}
-		$option = array('header' => 'register-', "staffs_array"=>$staffs_array);
+        $this->load->model('design2_model');
+        $design2s = $this->design2_model->gets();
+        $design2s_array = array();
+        foreach($design2s as $key => $design2) {
+            $design2s_array[$design2->id] = get_object_vars($design2);
+        }
+
+		$option = array('header' => 'register-', "staffs_array"=>$staffs_array, "design2s_array"=>$design2s_array);
 		if(isset($customer)) {
 			$option['customer'] = $customer;
 		}

@@ -42,7 +42,7 @@
             <td class="customer-info-table-head">담당자</td>
             <td>
               <?php
-                if(isset($customer['staff_id'])) {
+                if(isset($customer['staff_id']) && strlen($customer['staff_id']) > 0) {
                   echo $staffs_array[$customer['staff_id']]['name'];
                 }
                ?>

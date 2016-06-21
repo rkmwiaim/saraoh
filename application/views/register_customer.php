@@ -44,6 +44,11 @@
                   "memo" => $value->memo,
                 );
                 $staff_name = isset($value->staff_id) ? $staffs_array[$value->staff_id]["name"] : "";
+
+                $design2 = "";
+                if(isset($value->last_design2)) {
+                    $design2 = $design2s_array[$value->last_design2]["name"];
+                }
                 echo '
                 <form action="/index.php/register/customer" method="post" name="modify-customer-form'.$value->id.'">
                   <tr onclick="selectCustomer('.$value->id.')">
@@ -51,7 +56,7 @@
                     <td>'.$staff_name.'</td>
                     <td class="phone_number">'.$value->phone_number.'</td>
                     <td>'.$value->membership.'</td>
-                    <td>'.$value->last_design2.'</td>
+                    <td>'.$design2.'</td>
                     <td>'.$value->first_visit_date.'</td>
                     <td>'.$value->last_visit_date.'</td>
                     <td>'.$value->memo.'</td>

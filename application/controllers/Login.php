@@ -24,7 +24,7 @@ class Login extends MY_Controller {
 
                 redirect(base_url()."index.php");
             } else {
-                $this->session->unset_userdata('login');
+                // $this->session->unset_userdata('login');
             }
         }
         $this->load->view('login');

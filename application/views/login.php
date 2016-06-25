@@ -12,16 +12,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <?php
+    	if($this->session->flashdata('message')){
+    ?>
+    <script>
+    	alert('<?=$this->session->flashdata('message')?>');
+    </script>
+    <?php
+    	}
+    ?>
     <div class="container">
           <div class="col-md-4">
               <form action="<?=base_url()?>index.php/login" method="post">
                   <div class="form-group">
                       <label for="input-id">ID</label>
                       <input type="text" class="form-control" id="input-id" placeholder="id" name="id">
-                  </div>
-                  <div class="form-group">
-                      <label for="input-password">password</label>
-                      <input type="password" class="form-control" id="input-password" placeholder="password" name="password">
                   </div>
                   <div class="text-center">
                       <button type="submit" class="btn btn-default">제출</button>

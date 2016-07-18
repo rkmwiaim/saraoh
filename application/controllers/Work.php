@@ -3,20 +3,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Work extends MY_Controller {
-	function __construct()
-	    {
-	        parent::__construct();
-            $this->load->library('session');
-            $login = $this->session->userdata('login');
-
-            if(isset($login) && $login == "success") {
-
-            } else {
-                $this->load->helper('url');
-                redirect(base_url()."index.php/login");
-            }
-	    }
-
 	public function index()
 	{
 		$this->load->library('session');

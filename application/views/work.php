@@ -34,7 +34,7 @@
             <td class="customer-info-table-head">최초방문</td>
             <td><?= (!is_null($customer) && array_key_exists("first_visit_date", $customer)) ? $customer["first_visit_date"] : "" ?></td>
             <td class="customer-info-table-head">최종방문</td>
-            <td><?= (!is_null($customer) && array_key_exists("last_visit_date", $customer)) ? $customer["last_visit_date"] : "" ?></td>
+            <td><?= (!is_null($customer) && array_key_exists("last_visit_date", $customer)) ? date("Y-m-d", strtotime($customer["last_visit_date"])) : "" ?></td>
             <td class="customer-info-table-head">방문횟수</td>
             <td></td>
           </tr>

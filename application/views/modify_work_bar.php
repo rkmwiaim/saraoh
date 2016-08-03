@@ -39,7 +39,7 @@
               </tr>
               <tr>
                 <td><input type="text" class="form-control" id="work-total-price-input" value=0></td>
-                <td><input type="text" class="form-control" name="date" value="<?=(isset($workbundle))?$workbundle[0]->date:date('Y-m-d H:i:s')?>"></td>
+                <td><input type="text" class="form-control" name="date" value="<?=(isset($workbundle))?date("Y-m-d", strtotime($workbundle[0]->date)):date('Y-m-d')?>"></td>
               </tr>
               <tr>
                 <th rowspan="2">메모</th>

@@ -17,7 +17,7 @@
             if(isset($works)) {
               foreach($works as $key => $work) {
                 echo "<tr onclick=selectWork(".$work->bundle_id.")>";
-                echo "<td>".$work->date."</td>";
+                echo "<td>".date("Y-m-d", strtotime($work->date))."</td>";
                 echo "<td>".$design1s_array[$work->design1_id]['name']."</td>";
                 echo "<td>".$design2s_array[$work->design2_id]['name']."</td>";
                 $staff_id = $work->staff_id;

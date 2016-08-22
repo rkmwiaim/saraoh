@@ -14,6 +14,12 @@
       <form action="/index.php/work" method="post" name="modify_work_form">
         <tbody id="work-table-body">
           <?php
+            $sort_key_for_works = array();
+            foreach ($works as $key => $work)
+            {
+                $sort_key_for_works[$key] = $work->date;
+            }
+            array_multisort($sort_key_for_works, SORT_DESC, $works);
             if(isset($works)) {
               foreach($works as $key => $work) {
                 echo "<tr onclick=selectWork(".$work->bundle_id.")>";

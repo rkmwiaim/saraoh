@@ -5,9 +5,10 @@ class MY_Controller extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->library('session');
+                $this->load->helper('cookie');
                 $login = $this->session->userdata('login');
 
-                if(isset($login) && $login == "success") {
+                if(get_cookie('login') == "success" || (isset($login) && $login == "success")) {
                     $this->session->set_userdata('login','success');
                 } else {
                     $this->load->helper('url');
